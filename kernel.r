@@ -27,7 +27,7 @@ smooth_data <- rbind(smooth_2, smooth_5, smooth_10)
 ################ PLOT
 ################
 
-ggplot(data = cars, aes(x = speed, y = dist)) +
+fig <- ggplot(data = cars, aes(x = speed, y = dist)) +
   geom_point(color = "black", size = 2) +
   geom_line(data = smooth_data, aes(x = speed, y = dist, color = Bandwidth), size = 1) +
   scale_color_manual(values = c("2" = "red", "5" = "green", "10" = "blue")) +
@@ -38,6 +38,8 @@ ggplot(data = cars, aes(x = speed, y = dist)) +
     color = "Bandwidth"
   ) +
   theme_minimal()
+
+print(fig)
 
 ggsave(
   filename = "nonparametric.png",  # File name
